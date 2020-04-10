@@ -26,22 +26,21 @@ inquirer.prompt([
         message: "What is your Github username?"
 
     }
-]).then(function(username){
+]).then(function({username}){
     //store user name
-    let githubName= JSON.stringify(username.username);
-    console.log(githubName);
-
+    //use axios to get response from github API by passing stored user name
+    const queryURL = `https://api.github.com/users/${username}`;
+    //manipulate github api response to get data I want
     axios
-     .get("curl -u"+ githubName+ "https://api.github.com/user")
-     .then(function(response){
-         console.log(response.data);
-     })
-    
+    .get(queryURL)
+    .then(function(response){
+        let bioImage = response.data.avatar_url;
+        console.log(bioImage);
+    })
 })
-  
-//use axios to get response from github API by passing stored user name
 
-//manipulate github api response to get data I want
+
+
 
 //prompt user other README related questions
 
