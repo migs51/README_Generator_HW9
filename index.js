@@ -32,10 +32,18 @@ inquirer.prompt([
     const queryURL = `https://api.github.com/users/${username}`;
     //manipulate github api response to get data I want
     axios
-    .get(queryURL)
-    .then(function(response){
-        let bioImage = response.data.avatar_url;
-        console.log(bioImage);
+        .get(queryURL)
+        .then(function(response){
+            let bioImage = response.data.avatar_url;
+            console.log(bioImage);
+
+        fs.writeFile("readmeGen.md", bioImage, function(err){
+            if (err) {
+                throw err;
+            }
+            console.log ("Success!");
+        })
+
     })
 })
 
