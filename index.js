@@ -1,18 +1,5 @@
-// const questions = [
 
-// ];
-
-// function writeToFile(fileName, data) {
-// }
-
-// function init() {
-
-// }
-
-// init();
-
-//////////////////////////////////////////////////////////////////////////
-
+//global variables
 const fs = require("fs");
 const inquirer = require("inquirer");
 const axios = require("axios");
@@ -21,7 +8,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 
 
-//prompt user for their github user name
+//function to prompt user for their github user name
 
 function promptUser(){
     return inquirer.prompt([
@@ -78,7 +65,7 @@ function promptUser(){
     ])
 }
 
-
+//function that returns MD language, prompt answers and github api response to provide content using template literals in order to write to newly generated .md file
 function generateMD (answers, bioImage) {
 
     return `
@@ -134,7 +121,9 @@ ${answers.questions}
 }
 
 
-
+//async await function that returns user ansers, gets the github API
+//used obj destructing to grab avatar image
+//passed answers from prompt and the github avatarg image as paramets in my generateMD function to render user provided content
 async function init() {
     try {
         const answers = await promptUser();
@@ -143,7 +132,7 @@ async function init() {
         console.log(bioImage);
         const md = generateMD(answers, bioImage);
         
-      
+      //use fs to generate MD file
         await writeFileAsync("readmeGen.md", md);
     } catch(err){
         console.log(err);
@@ -154,8 +143,7 @@ init();
 
 
 
-//prompt user other README related questions
 
-//use temporal literals to popluate README
 
-//use fs to generate MD file
+
+
