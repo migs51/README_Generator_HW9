@@ -78,32 +78,12 @@ function promptUser(){
     ])
 }
 
-// .then(function({username, title, instructions, usage, credits, license, contributing, tests, questions}){
-//     //store user name
-//     //use axios to get response from github API by passing stored user name
-   
-//     //manipulate github api response to get data I want
-//     axios
-//         .get(queryURL)
-//         .then(function(response){
-//             let bioImage = `<img src = "${response.data.avatar_url}" alt= "image of Miguel" height= "100px" width="100px" />"`;
-//             console.log(bioImage);
-
-//         fs.writeFile("readmeGen.md", bioImage, function(err){
-//             if (err) {
-//                 throw err;
-//             }
-//             console.log ("Success!");
-//         })
-
-//     })
-// })
 
 function generateMD (answers, bioImage) {
 
     return `
-# Your Project Title
-${answers.title}
+# ${answers.title}
+
 
 ## Description 
 ${answers.description}
@@ -136,7 +116,8 @@ ${answers.license}
 
 
 ## Badges
-${answers.badges}
+![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+
 
 ## Contributing
 ${answers.contributing}
@@ -146,6 +127,7 @@ ${answers.contributing}
 ${answers.tests}
 
 ## Author
+${answers.questions}
 <img src = "${bioImage}" alt= "image of Miguel" height= "100px" width="100px" />
 
     `
@@ -156,14 +138,11 @@ ${answers.tests}
 async function init() {
     try {
         const answers = await promptUser();
-        
         const githubAPI = await axios.get(`https://api.github.com/users/${answers.username}`);
         const {avatar_url: bioImage} = githubAPI.data;
         console.log(bioImage);
         const md = generateMD(answers, bioImage);
-        // let bioImage = response.data.avatar_url;
-        // console.log(bioImage);
-        // <img src = "${response.data.avatar_url}" alt= "image of Miguel" height= "100px" width="100px" />
+        
       
         await writeFileAsync("readmeGen.md", md);
     } catch(err){
