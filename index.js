@@ -34,7 +34,7 @@ inquirer.prompt([
     axios
         .get(queryURL)
         .then(function(response){
-            let bioImage = response.data.avatar_url;
+            let bioImage = `<img src = "${response.data.avatar_url}" alt= "image of Miguel" height= "100px" width="100px" />"`;
             console.log(bioImage);
 
         fs.writeFile("readmeGen.md", bioImage, function(err){
