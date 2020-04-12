@@ -99,7 +99,7 @@ function promptUser(){
 //     })
 // })
 
-function generateMD (answers) {
+function generateMD (answers, bioImage) {
 
     return `
 # Your Project Title
@@ -146,7 +146,7 @@ ${answers.contributing}
 ${answers.tests}
 
 ## Author
-<img src = "${picOfMe}" alt= "image of Miguel" height= "100px" width="100px" />
+<img src = "${bioImage}" alt= "image of Miguel" height= "100px" width="100px" />
 
     `
 }
@@ -160,7 +160,7 @@ async function init() {
         const githubAPI = await axios.get(`https://api.github.com/users/${answers.username}`);
         const {avatar_url: bioImage} = githubAPI.data;
         console.log(bioImage);
-        const md = generateMD(answers);
+        const md = generateMD(answers, bioImage);
         // let bioImage = response.data.avatar_url;
         // console.log(bioImage);
         // <img src = "${response.data.avatar_url}" alt= "image of Miguel" height= "100px" width="100px" />

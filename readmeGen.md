@@ -1,9 +1,9 @@
 
 # Your Project Title
-lskdjf
+skldfj
 
 ## Description 
-slkdfj
+skldfj
 
 ## Table of Contents 
 
@@ -18,31 +18,31 @@ slkdfj
 
 
 ## Installation
-klsdjf
+kldfj
 
 ## Usage 
 undefined
 
 
 ## Credits
-klsdjf
+lskdfj
 
 
 ## License
-lksdfj
+skdlfj
 
 
 ## Badges
 undefined
 
 ## Contributing
-lksdjf
+sdlkfj
 
 
 ## Tests
-lskjf
+sldkfj
 
 ## Author
-<img src = "undefined" alt= "image of Miguel" height= "100px" width="100px" />
+<img src = "https://avatars0.githubusercontent.com/u/19334141?v=4" alt= "image of Miguel" height= "100px" width="100px" />
 
     
